@@ -3,8 +3,6 @@ const leftButton = document.querySelector(".scroll-left");
 const rightButton = document.querySelector(".scroll-right");
 let ticking = false;
 
-console.log(carrousel);
-
 function carrouselScroll() {
   if (getScrollPosition(carrousel) === 0)
     leftButton.style.visibility = "hidden";
@@ -35,9 +33,9 @@ function onCarouselScroll(e) {
   if (!ticking) {
     window.requestAnimationFrame(() => {
       if (scrollPosition > 0) leftButton.style.visibility = "visible";
-      if (scrollPosition <= 0) leftButton.style.visibility = "hidden";
+      else leftButton.style.visibility = "hidden";
       if (scrollPosition < 1670) rightButton.style.visibility = "visible";
-      if (scrollPosition >= 1670) rightButton.style.visibility = "hidden";
+      else rightButton.style.visibility = "hidden";
       ticking = false;
     });
 
