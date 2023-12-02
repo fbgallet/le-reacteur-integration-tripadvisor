@@ -1,0 +1,33 @@
+header {
+  margin: 10px 0;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    nav {
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: bold;
+      letter-spacing: 1.1px;
+      display: flex;
+      width: 500px;
+      justify-content: space-between;
+      justify-items: center;
+
+      span {
+        vertical-align: center;
+        padding: 15px 20px;
+        border-radius: 15px;
+
+        &:hover {
+          background-color: lightgray;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .logo img {
+    height: 40px;
+  }
+}

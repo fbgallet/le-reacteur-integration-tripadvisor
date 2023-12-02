@@ -1,0 +1,308 @@
+@import "reset.css";
+@import "fonts.css";
+@import "header.scss";
+@import "footer.scss";
+@import "global.scss";
+
+/* ---- */
+/* MAIN */
+/* ---- */
+
+main {
+  margin-top: 30px;
+  nav {
+    background-color: white;
+    padding: 30px 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+  }
+  .container .city {
+    margin: 0 auto;
+  }
+}
+
+.menu {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: bold;
+  letter-spacing: 1.1px;
+  flex: 1;
+
+  &:hover {
+    background: #000;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+/* -------------- */
+/* MAIN PHOTO BOX */
+/* -------------- */
+
+.photo-container {
+  display: flex;
+  border-radius: 10px;
+  /* border: 1px dotted red; */
+  gap: 3px;
+  height: 370px;
+  margin-bottom: 20px;
+  overflow: hidden;
+
+  img:hover {
+    opacity: 0.7;
+  }
+}
+
+.main-photo {
+  position: relative;
+  img {
+    width: 100%;
+    border-radius: 10px 0 0 10px;
+    padding-right: 3px;
+    object-fit: cover;
+    object-position: center;
+  }
+  button {
+    position: absolute;
+    left: 15px;
+    bottom: 15px;
+    padding: 10px;
+    i {
+      margin-right: 5px;
+    }
+  }
+}
+
+.small-photo {
+  width: 45%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  div:first-child img {
+    width: 100%;
+    border-radius: 0 10px 0 0;
+  }
+  div:last-child img {
+    width: 100%;
+    border-radius: 0 0 10px 0;
+  }
+}
+
+/* --------------------- */
+/* --- SECTION INFOS --- */
+/* --------------------- */
+
+.path-visit {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.city-infos {
+  display: flex;
+  justify-content: space-between;
+  > div:first-child {
+    width: 50%;
+    margin-bottom: 30px;
+  }
+  h2 {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  button {
+    width: fit-content;
+    padding: 15px 20px;
+    margin: 10px 0;
+    border-radius: 15px;
+    background-color: #333333;
+    border: none;
+    &:hover {
+      background-color: black;
+      cursor: pointer;
+    }
+  }
+}
+
+.map-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40%;
+  height: 450px;
+  /* border: 3px solid blue; */
+  margin-top: 30px;
+}
+
+.map-container {
+  > div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #fe5d5d;
+    border-radius: 10px 10px 0 0;
+    padding: 0 20px;
+    height: 270px;
+  }
+  p {
+    font-size: 14px;
+  }
+  img {
+    height: 180px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0 0 10px 10px;
+  }
+}
+
+/* -------------------------- */
+/* --- SECTION ACTIVITIES --- */
+/* -------------------------- */
+
+.activities {
+  margin-top: 30px;
+}
+.activity {
+  position: relative;
+  display: flex;
+  p {
+    font-size: 18px;
+    margin: 12px 0;
+  }
+}
+.se-divertir > div:first-child {
+  /* flex: 1; */
+  width: 27%;
+  padding-right: 30px;
+}
+
+.carrousel-container {
+  flex: 1;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  overflow-x: scroll;
+  gap: 10px;
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.scroll-right,
+.scroll-left {
+  background-color: white;
+  position: absolute;
+  top: 80px;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  border: 1px solid black;
+  z-index: 1;
+}
+.scroll-left {
+  left: 290px;
+}
+.scroll-right {
+  right: -15px;
+}
+.scroll-right:hover,
+.scroll-left:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.place-container {
+  flex-shrink: 0;
+  width: 270px;
+  height: 300px;
+}
+.activity-image {
+  position: relative;
+  > img {
+    width: 264px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    &:hover {
+      opacity: 0.7;
+      cursor: pointer;
+    }
+  }
+  > .like {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+  }
+  > .best {
+    position: absolute;
+    bottom: 10px;
+    left: 5px;
+    width: 30px;
+    height: 42px;
+    background-color: #34e0a1;
+    border-radius: 50% 50% 5px 5px;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    > div {
+      padding-bottom: 15px;
+    }
+    img {
+      width: 30px;
+      object-fit: cover;
+    }
+  }
+}
+
+.place-infos-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 10px;
+  gap: 8px;
+}
+.place-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+.place-score {
+  display: flex;
+  align-items: center;
+  > svg {
+    fill: #00aa6c;
+  }
+  > span {
+    font-size: 12px;
+    margin-top: 1px;
+    margin-left: 10px;
+  }
+}
+.place-type {
+  font-size: 14px;
+}
