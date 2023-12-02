@@ -1,9 +1,12 @@
-const caroussel = document.querySelector(".caroussel-container");
+const carrousel = document.querySelector(".carrousel-container");
 const leftButton = document.querySelector(".scroll-left");
 const rightButton = document.querySelector(".scroll-right");
+let ticking = false;
 
-function carousselScroll() {
-  if (getScrollPosition(caroussel) === 0)
+console.log(carrousel);
+
+function carrouselScroll() {
+  if (getScrollPosition(carrousel) === 0)
     leftButton.style.visibility = "hidden";
   leftButton.addEventListener("click", onClickToScroll);
   rightButton.addEventListener("click", onClickToScroll);
@@ -13,41 +16,34 @@ function onClickToScroll(e) {
   const option = {
     behavior: "smooth",
   };
-  let currentPosition = getScrollPosition(caroussel);
+  let currentPosition = getScrollPosition(carrousel);
   console.log(currentPosition);
-  if (e.target.className.includes("left")) option.left = currentPosition - 840;
-  if (e.target.className.includes("right")) option.left = currentPosition + 840;
-  if (option.left > 0) leftButton.style.visibility = "visible";
-  if (option.left <= 0) leftButton.style.visibility = "hidden";
-  if (option.left < 1670) rightButton.style.visibility = "visible";
-  if (option.left >= 1670) rightButton.style.visibility = "hidden";
-  caroussel.scroll(option);
+  if (e.target.className.includes("left"))
+    option.left = Math.ceil(currentPosition / 280) * 280 - 840;
+  if (e.target.className.includes("right"))
+    option.left = Math.floor(currentPosition / 280) * 280 + 840;
+  carrousel.scroll(option);
 }
 
 function getScrollPosition(elt) {
   return elt.scrollLeft;
 }
 
-const observer = new MutationObserver((mutations) => {
-  console.log(mutations);
-  mutations.forEach((mutation) => {
-    if (
-      mutation.type === "attributes"
-      // &&
-      // mutation.attributeName === "scrollLeft"
-    ) {
-      handleScrollLeftChange(mutation);
-    }
-  });
-});
+function onCarouselScroll(e) {
+  let scrollPosition = getScrollPosition(e.target);
 
-function handleScrollLeftChange() {
-  console.log("ScrollLeft position has changed", mutation);
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      if (scrollPosition > 0) leftButton.style.visibility = "visible";
+      if (scrollPosition <= 0) leftButton.style.visibility = "hidden";
+      if (scrollPosition < 1670) rightButton.style.visibility = "visible";
+      if (scrollPosition >= 1670) rightButton.style.visibility = "hidden";
+      ticking = false;
+    });
+
+    ticking = true;
+  }
 }
 
-observer.observe(caroussel, {
-  attributes: true,
-  // attributeFilter: ["scrollLeft"],
-});
-
-carousselScroll();
+carrousel.addEventListener("scroll", onCarouselScroll);
+carrouselScroll();

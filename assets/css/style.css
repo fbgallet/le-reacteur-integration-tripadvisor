@@ -195,9 +195,18 @@ main nav {
 }
 
 .path-visit {
-  font-size: 12px;
   display: flex;
   justify-content: space-between;
+}
+.path-visit,
+.path-visit a {
+  font-size: 12px;
+}
+.path-visit a {
+  text-decoration: none;
+}
+.path-visit a:hover {
+  text-decoration: underline;
 }
 
 .city-infos {
@@ -280,7 +289,7 @@ main nav {
   font-size: 18px;
   margin: 12px 0;
 }
-.caroussel-container {
+.carrousel-container {
   flex: 1;
   display: flex;
   flex-wrap: nowrap;
@@ -313,12 +322,12 @@ main nav {
   cursor: pointer;
 }
 /* Hide scrollbar for Chrome, Safari and Opera */
-.caroussel-container::-webkit-scrollbar {
+.carrousel-container::-webkit-scrollbar {
   display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.caroussel-container {
+.carrousel-container {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
