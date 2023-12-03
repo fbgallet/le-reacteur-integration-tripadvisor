@@ -1,53 +1,5 @@
 @import "reset.css";
 @import "fonts.css";
-header {
-  margin: 10px 0;
-}
-header .container {
-  display: flex;
-  justify-content: space-between;
-}
-header .container nav {
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: bold;
-  letter-spacing: 1.1px;
-  display: flex;
-  width: 500px;
-  justify-content: space-between;
-  justify-items: center;
-}
-header .container nav span {
-  vertical-align: center;
-  padding: 15px 20px;
-  border-radius: 15px;
-}
-header .container nav span:hover {
-  background-color: lightgray;
-  cursor: pointer;
-}
-header .logo img {
-  height: 40px;
-}
-
-footer {
-  background-color: #faf1ec;
-  padding: 50px 0;
-}
-footer .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-footer img {
-  height: 24px;
-  margin-right: 10px;
-}
-footer a {
-  text-decoration: none;
-  font-weight: bold;
-}
-
 body {
   background-color: white;
   font-family: TS-Reg, sans-serif;
@@ -102,7 +54,7 @@ p {
 }
 
 .container {
-  width: 1140px;
+  max-width: 1140px;
   margin: 10px auto;
 }
 
@@ -115,6 +67,66 @@ p {
 .black-button:hover {
   opacity: 0.7;
   cursor: pointer;
+}
+
+header {
+  margin: 10px 0;
+}
+header .fa-bars {
+  display: none;
+}
+header .logo > img:nth-child(2) {
+  display: none;
+}
+header .container {
+  display: flex;
+  justify-content: space-between;
+}
+header .container > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+}
+header .container nav {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: bold;
+  letter-spacing: 1.1px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  justify-items: center;
+}
+header .container nav span {
+  vertical-align: center;
+  padding: 15px 20px;
+  border-radius: 15px;
+}
+header .container nav span:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+header .logo img {
+  height: 40px;
+}
+
+footer {
+  background-color: #faf1ec;
+  padding: 50px 0;
+}
+footer .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+footer img {
+  height: 24px;
+  margin-right: 10px;
+}
+footer a {
+  text-decoration: none;
+  font-weight: bold;
 }
 
 /* ---- */
@@ -155,11 +167,16 @@ main .container .city {
   cursor: pointer;
 }
 
+.hidden-small {
+  display: none;
+}
+
 /* -------------- */
 /* MAIN PHOTO BOX */
 /* -------------- */
 .photo-container {
   display: flex;
+  justify-content: space-between;
   border-radius: 10px;
   /* border: 1px dotted red; */
   gap: 3px;
@@ -173,11 +190,12 @@ main .container .city {
 
 .main-photo {
   position: relative;
+  width: 66%;
+  overflow: hidden;
 }
 .main-photo img {
   width: 100%;
   border-radius: 10px 0 0 10px;
-  padding-right: 3px;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
@@ -194,18 +212,19 @@ main .container .city {
 }
 
 .small-photo {
-  width: 45%;
+  flex: 1;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   justify-content: center;
   gap: 3px;
+  min-width: 350px;
 }
-.small-photo div:first-child img {
+.small-photo img:first-child {
   width: 100%;
   border-radius: 0 10px 0 0;
 }
-.small-photo div:last-child img {
+.small-photo img:last-child {
   width: 100%;
   border-radius: 0 0 10px 0;
 }
@@ -291,23 +310,48 @@ main .container .city {
 }
 
 .activity {
-  position: relative;
   display: flex;
+  justify-content: space-between;
 }
 .activity p {
   font-size: 18px;
   margin: 12px 0;
 }
-
-.se-divertir > div:first-child {
-  /* flex: 1; */
-  width: 27%;
+.activity > div:first-child {
+  width: 25%;
   padding-right: 30px;
+}
+.activity .scroll-wrapper {
+  width: 75%;
+  position: relative;
+}
+.activity .scroll-wrapper .scroll-right,
+.activity .scroll-wrapper .scroll-left {
+  background-color: white;
+  position: absolute;
+  top: 28%;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  border: 1px solid black;
+  z-index: 1;
+}
+.activity .scroll-wrapper .scroll-left {
+  left: -15px;
+}
+.activity .scroll-wrapper .scroll-right {
+  right: -15px;
+}
+.activity .scroll-wrapper .scroll-right:hover,
+.activity .scroll-wrapper .scroll-left:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
 }
 
 .carrousel-container {
-  flex: 1;
   display: flex;
+  justify-content: space-between;
   flex-wrap: nowrap;
   overflow: hidden;
   overflow-x: scroll;
@@ -321,45 +365,18 @@ main .container .city {
   display: none;
 }
 
-.scroll-right,
-.scroll-left {
-  background-color: white;
-  position: absolute;
-  top: 80px;
-  border-radius: 50%;
-  padding: 8px;
-  cursor: pointer;
-  border: 1px solid black;
-  z-index: 1;
-}
-
-.scroll-left {
-  left: 290px;
-}
-
-.scroll-right {
-  right: -15px;
-}
-
-.scroll-right:hover,
-.scroll-left:hover {
-  background-color: black;
-  color: white;
-  cursor: pointer;
-}
-
 .place-container {
   flex-shrink: 0;
-  width: 270px;
-  height: 300px;
+  height: 100%;
+  width: calc(33% - 5px);
 }
 
 .activity-image {
   position: relative;
 }
 .activity-image > img {
-  width: 264px;
-  height: 200px;
+  height: 66%;
+  width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
@@ -428,4 +445,102 @@ main .container .city {
 
 .place-type {
   font-size: 14px;
+}
+
+@media (max-width: 1184px) {
+  .container {
+    margin: 0 20px;
+  }
+  main nav {
+    flex-wrap: wrap;
+  }
+  main .menu {
+    flex: 0 0 auto;
+    min-width: 0;
+    width: calc(25% - 10px);
+    gap: 10px;
+  }
+  main .hidden-small {
+    display: flex;
+  }
+}
+@media (max-width: 1024px) {
+  header .fa-bars {
+    display: block;
+  }
+  header .fa-bars:hover {
+    cursor: pointer;
+  }
+  header nav > span {
+    display: none;
+  }
+  .photo-container {
+    height: 276px;
+  }
+}
+@media (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+    margin: 10px 0 5px 0;
+  }
+  header .logo > img:nth-child(1) {
+    display: none;
+  }
+  header .logo > img:nth-child(2) {
+    display: block;
+  }
+  header nav button {
+    display: none;
+  }
+  main nav {
+    flex-wrap: nowrap;
+    overflow: hidden;
+    overflow-x: scroll;
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    /* Hide scrollbar for Chrome, Safari and Opera */
+  }
+  main nav::-webkit-scrollbar {
+    display: none;
+  }
+  main .menu {
+    flex: 0 0 auto;
+    min-width: 150px;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  main .hidden-small {
+    display: flex;
+  }
+  main .main-photo {
+    width: 100%;
+  }
+  main .small-photo {
+    display: none;
+  }
+  main .city-infos {
+    flex-direction: column;
+  }
+  main .city-infos > div:first-child,
+  main .city-infos .map-container {
+    width: 100%;
+  }
+  main .activity {
+    flex-direction: column;
+    gap: 15px;
+  }
+  main .activity > div:first-child {
+    width: 100%;
+  }
+  main .activity .scroll-wrapper {
+    width: 100%;
+  }
+  main .activity .scroll-wrapper .scroll-left,
+  main .activity .scroll-wrapper .scroll-right {
+    display: none;
+  }
+  main .activity .place-container {
+    width: calc(50% - 5px);
+  }
 }/*# sourceMappingURL=style.css.map */

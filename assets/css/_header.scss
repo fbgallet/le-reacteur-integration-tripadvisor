@@ -1,9 +1,23 @@
 header {
   margin: 10px 0;
 
+  .fa-bars {
+    display: none;
+  }
+  .logo > img:nth-child(2) {
+    display: none;
+  }
+
   .container {
     display: flex;
     justify-content: space-between;
+
+    > div {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 15px;
+    }
 
     nav {
       font-size: 16px;
@@ -11,8 +25,8 @@ header {
       font-weight: bold;
       letter-spacing: 1.1px;
       display: flex;
-      width: 500px;
-      justify-content: space-between;
+      justify-content: flex-end;
+      gap: 15px;
       justify-items: center;
 
       span {

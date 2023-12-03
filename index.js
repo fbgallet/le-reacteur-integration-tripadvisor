@@ -17,9 +17,9 @@ function onClickToScroll(e) {
   let currentPosition = getScrollPosition(carrousel);
   console.log(currentPosition);
   if (e.target.className.includes("left"))
-    option.left = Math.ceil(currentPosition / 280) * 280 - 840;
+    option.left = Math.ceil(currentPosition / 287) * 287 - 861;
   if (e.target.className.includes("right"))
-    option.left = Math.floor(currentPosition / 280) * 280 + 840;
+    option.left = Math.floor(currentPosition / 287) * 287 + 861;
   carrousel.scroll(option);
 }
 

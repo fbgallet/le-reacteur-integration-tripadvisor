@@ -1,8 +1,8 @@
+@use "base";
 @import "reset.css";
 @import "fonts.css";
 @import "header.scss";
 @import "footer.scss";
-@import "global.scss";
 
 /* ---- */
 /* MAIN */
@@ -36,12 +36,14 @@ main {
   font-weight: bold;
   letter-spacing: 1.1px;
   flex: 1;
-
   &:hover {
     background: #000;
     color: white;
     cursor: pointer;
   }
+}
+.hidden-small {
+  display: none;
 }
 
 /* -------------- */
@@ -50,13 +52,13 @@ main {
 
 .photo-container {
   display: flex;
+  justify-content: space-between;
   border-radius: 10px;
   /* border: 1px dotted red; */
   gap: 3px;
   height: 370px;
   margin-bottom: 20px;
   overflow: hidden;
-
   img:hover {
     opacity: 0.7;
   }
@@ -64,10 +66,12 @@ main {
 
 .main-photo {
   position: relative;
+  width: 66%;
+  overflow: hidden;
   img {
     width: 100%;
     border-radius: 10px 0 0 10px;
-    padding-right: 3px;
+    // padding-right: 3px;
     object-fit: cover;
     object-position: center;
   }
@@ -83,17 +87,18 @@ main {
 }
 
 .small-photo {
-  width: 45%;
+  flex: 1;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   justify-content: center;
   gap: 3px;
-  div:first-child img {
+  min-width: 350px;
+  img:first-child {
     width: 100%;
     border-radius: 0 10px 0 0;
   }
-  div:last-child img {
+  img:last-child {
     width: 100%;
     border-radius: 0 0 10px 0;
   }
@@ -180,26 +185,53 @@ main {
   margin-top: 30px;
 }
 .activity {
-  position: relative;
   display: flex;
+  justify-content: space-between;
   p {
     font-size: 18px;
     margin: 12px 0;
   }
-}
-.se-divertir > div:first-child {
-  /* flex: 1; */
-  width: 27%;
-  padding-right: 30px;
+  > div:first-child {
+    width: 25%;
+    padding-right: 30px;
+  }
+  .scroll-wrapper {
+    width: 75%;
+    position: relative;
+    .scroll-right,
+    .scroll-left {
+      background-color: white;
+      position: absolute;
+      top: 28%;
+      border-radius: 50%;
+      padding: 8px;
+      cursor: pointer;
+      border: 1px solid black;
+      z-index: 1;
+    }
+    .scroll-left {
+      left: -15px;
+    }
+    .scroll-right {
+      right: -15px;
+    }
+    .scroll-right:hover,
+    .scroll-left:hover {
+      background-color: black;
+      color: white;
+      cursor: pointer;
+    }
+  }
 }
 
 .carrousel-container {
-  flex: 1;
   display: flex;
+  justify-content: space-between;
   flex-wrap: nowrap;
   overflow: hidden;
   overflow-x: scroll;
   gap: 10px;
+  // height: 300px;
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -208,40 +240,19 @@ main {
     display: none;
   }
 }
-.scroll-right,
-.scroll-left {
-  background-color: white;
-  position: absolute;
-  top: 80px;
-  border-radius: 50%;
-  padding: 8px;
-  cursor: pointer;
-  border: 1px solid black;
-  z-index: 1;
-}
-.scroll-left {
-  left: 290px;
-}
-.scroll-right {
-  right: -15px;
-}
-.scroll-right:hover,
-.scroll-left:hover {
-  background-color: black;
-  color: white;
-  cursor: pointer;
-}
 
 .place-container {
   flex-shrink: 0;
-  width: 270px;
-  height: 300px;
+  height: 100%;
+  width: calc(33% - 5px);
 }
 .activity-image {
   position: relative;
   > img {
-    width: 264px;
-    height: 200px;
+    height: 66%;
+    width: 100%;
+    // width: 264px;
+    // width: cacl(height + 64px);
     object-fit: cover;
     object-position: center;
     border-radius: 10px;
@@ -305,4 +316,116 @@ main {
 }
 .place-type {
   font-size: 14px;
+}
+
+@media (max-width: 1184px) {
+  .container {
+    margin: 0 20px;
+  }
+  main {
+    nav {
+      flex-wrap: wrap;
+    }
+    .menu {
+      flex: 0 0 auto;
+      min-width: 0;
+      width: calc(25% - 10px);
+      gap: 10px;
+    }
+    .hidden-small {
+      display: flex;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  header {
+    .fa-bars {
+      display: block;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    nav > span {
+      display: none;
+    }
+  }
+  .photo-container {
+    height: 276px;
+  }
+  // .carrousel-container {
+  //   height: 29vw;
+  // }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+    margin: 10px 0 5px 0;
+  }
+  header {
+    .logo > img {
+      &:nth-child(1) {
+        display: none;
+      }
+      &:nth-child(2) {
+        display: block;
+      }
+    }
+    nav button {
+      display: none;
+    }
+  }
+  main {
+    nav {
+      flex-wrap: nowrap;
+      overflow: hidden;
+      overflow-x: scroll;
+      /* Hide scrollbar for IE, Edge and Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    .menu {
+      flex: 0 0 auto;
+      min-width: 150px;
+      width: fit-content;
+    }
+    .hidden-small {
+      display: flex;
+    }
+    .main-photo {
+      width: 100%;
+    }
+    .small-photo {
+      display: none;
+    }
+    .city-infos {
+      flex-direction: column;
+      > div:first-child,
+      .map-container {
+        width: 100%;
+      }
+    }
+    .activity {
+      flex-direction: column;
+      gap: 15px;
+      > div:first-child {
+        width: 100%;
+      }
+      .scroll-wrapper {
+        width: 100%;
+        .scroll-left,
+        .scroll-right {
+          display: none;
+        }
+      }
+      .place-container {
+        width: calc(50% - 5px);
+      }
+    }
+  }
 }
