@@ -1,7 +1,7 @@
 header {
   margin: 10px 0;
 
-  .fa-bars {
+  .icon-menu_bars {
     display: none;
   }
   .logo > img:nth-child(2) {
@@ -43,5 +43,25 @@ header {
   }
   .logo img {
     height: 40px;
+  }
+}
+
+@media (max-width: 1024px) {
+  header {
+    .icon-menu_bars {
+      display: block;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    nav > span {
+      display: none;
+    }
+  }
+  .photo-container {
+    height: 276px;
+  }
+  .carrousel-container {
+    height: 29vw;
   }
 }

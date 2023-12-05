@@ -1,8 +1,9 @@
+@use "reset.css";
+@use "fonts.css";
 @use "base";
-@import "reset.css";
-@import "fonts.css";
-@import "header.scss";
-@import "footer.scss";
+@use "icons.css";
+@use "header.scss";
+@use "footer.scss";
 
 /* ---- */
 /* MAIN */
@@ -305,8 +306,10 @@ main {
 .place-score {
   display: flex;
   align-items: center;
-  > svg {
-    fill: #00aa6c;
+  > .icon-bubble_rating_full,
+  .icon-bubble_rating_half,
+  .icon-bubble_rating_empty {
+    color: #00aa6c;
   }
   > span {
     font-size: 12px;
@@ -339,23 +342,34 @@ main {
 }
 
 @media (max-width: 1024px) {
-  header {
-    .fa-bars {
-      display: block;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-    nav > span {
-      display: none;
-    }
-  }
+  //   header {
+  //     .fa-bars {
+  //       display: block;
+  //       &:hover {
+  //         cursor: pointer;
+  //       }
+  //     }
+  //     nav > span {
+  //       display: none;
+  //     }
+  //   }
+  // header {
+  //   .icon-menu_bars {
+  //     display: block;
+  //     &:hover {
+  //       cursor: pointer;
+  //     }
+  //   }
+  //   nav > span {
+  //     display: none;
+  //   }
+  // }
+  // .photo-container {
+  //   height: 276px;
+  // }
   .photo-container {
     height: 276px;
   }
-  // .carrousel-container {
-  //   height: 29vw;
-  // }
 }
 
 @media (max-width: 768px) {
