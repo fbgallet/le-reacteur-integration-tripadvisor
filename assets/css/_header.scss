@@ -1,24 +1,36 @@
 header {
   margin: 10px 0;
 
-  .icon-menu_bars {
-    display: none;
-  }
-  .logo > img:nth-child(2) {
-    display: none;
-  }
-
   .container {
     display: flex;
     justify-content: space-between;
 
-    > div {
+    .left-header {
       display: flex;
       justify-content: flex-start;
       align-items: center;
       gap: 15px;
+      .icon-menu_bars {
+        display: none;
+      }
+      .logo > img:nth-child(2) {
+        display: none;
+      }
+      .search-bar {
+        display: flex;
+        align-items: center;
+        height: 36px;
+        width: 340px;
+        min-width: 180px;
+        border: solid 2px silver;
+        border-radius: 18px;
+        padding: 0 10px;
+        margin-left: 10px;
+        input {
+          border: none;
+        }
+      }
     }
-
     nav {
       font-size: 16px;
       line-height: 20px;
@@ -29,15 +41,21 @@ header {
       gap: 15px;
       justify-items: center;
 
-      span {
+      > span {
         vertical-align: center;
-        padding: 15px 20px;
+        padding: 15px 10px;
         border-radius: 15px;
-
+        > span {
+          padding-left: 5px;
+        }
         &:hover {
           background-color: lightgray;
           cursor: pointer;
         }
+      }
+      .icon-search {
+        display: none;
+        cursor: pointer;
       }
     }
   }
@@ -48,14 +66,56 @@ header {
 
 @media (max-width: 1024px) {
   header {
-    .icon-menu_bars {
-      display: block;
-      &:hover {
-        cursor: pointer;
+    .container {
+      .left-header {
+        .icon-menu_bars {
+          display: block;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+        .search-bar {
+          display: none;
+        }
+      }
+      nav > span > span {
+        display: none;
       }
     }
-    nav > span {
-      display: none;
+  }
+  .photo-container {
+    height: 276px;
+  }
+  .carrousel-container {
+    height: 29vw;
+  }
+}
+@media (max-width: 768px) {
+  header {
+    .container {
+      .left-header {
+        .logo {
+          img:first-child {
+            display: none;
+          }
+          img:last-child {
+            display: block;
+          }
+        }
+        .search-bar {
+          display: none;
+        }
+      }
+      nav {
+        align-items: center;
+        span {
+          display: none;
+        }
+        .icon-search {
+          display: block;
+          font-size: 20px;
+        }
+      }
     }
   }
   .photo-container {

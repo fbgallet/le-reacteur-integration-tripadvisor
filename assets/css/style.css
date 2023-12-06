@@ -1495,21 +1495,35 @@ i {
 header {
   margin: 10px 0;
 }
-header .icon-menu_bars {
-  display: none;
-}
-header .logo > img:nth-child(2) {
-  display: none;
-}
 header .container {
   display: flex;
   justify-content: space-between;
 }
-header .container > div {
+header .container .left-header {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 15px;
+}
+header .container .left-header .icon-menu_bars {
+  display: none;
+}
+header .container .left-header .logo > img:nth-child(2) {
+  display: none;
+}
+header .container .left-header .search-bar {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  width: 340px;
+  min-width: 180px;
+  border: solid 2px silver;
+  border-radius: 18px;
+  padding: 0 10px;
+  margin-left: 10px;
+}
+header .container .left-header .search-bar input {
+  border: none;
 }
 header .container nav {
   font-size: 16px;
@@ -1521,13 +1535,20 @@ header .container nav {
   gap: 15px;
   justify-items: center;
 }
-header .container nav span {
+header .container nav > span {
   vertical-align: center;
-  padding: 15px 20px;
+  padding: 15px 10px;
   border-radius: 15px;
 }
-header .container nav span:hover {
+header .container nav > span > span {
+  padding-left: 5px;
+}
+header .container nav > span:hover {
   background-color: lightgray;
+  cursor: pointer;
+}
+header .container nav .icon-search {
+  display: none;
   cursor: pointer;
 }
 header .logo img {
@@ -1535,14 +1556,44 @@ header .logo img {
 }
 
 @media (max-width: 1024px) {
-  header .icon-menu_bars {
+  header .container .left-header .icon-menu_bars {
     display: block;
   }
-  header .icon-menu_bars:hover {
+  header .container .left-header .icon-menu_bars:hover {
     cursor: pointer;
   }
-  header nav > span {
+  header .container .left-header .search-bar {
     display: none;
+  }
+  header .container nav > span > span {
+    display: none;
+  }
+  .photo-container {
+    height: 276px;
+  }
+  .carrousel-container {
+    height: 29vw;
+  }
+}
+@media (max-width: 768px) {
+  header .container .left-header .logo img:first-child {
+    display: none;
+  }
+  header .container .left-header .logo img:last-child {
+    display: block;
+  }
+  header .container .left-header .search-bar {
+    display: none;
+  }
+  header .container nav {
+    align-items: center;
+  }
+  header .container nav span {
+    display: none;
+  }
+  header .container nav .icon-search {
+    display: block;
+    font-size: 20px;
   }
   .photo-container {
     height: 276px;
