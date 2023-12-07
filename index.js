@@ -1,3 +1,6 @@
+// import { axios } from "axios";
+// const axios = require("axios");
+
 const carrousel = document.querySelector(".carrousel-container");
 const leftButton = document.querySelector(".scroll-left");
 const rightButton = document.querySelector(".scroll-right");
@@ -69,6 +72,6 @@ submitButton.addEventListener("click", async (e) => {
     message: document.querySelector("#message").value,
   };
   console.log(formData);
-  // const response = await axios.post("http://localhost:3000/form", data);
-  // console.log(response);
+  const response = await axios.post("http://localhost:3000/form", formData);
+  console.log(response);
 });
