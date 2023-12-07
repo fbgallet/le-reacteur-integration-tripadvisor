@@ -1620,6 +1620,67 @@ footer a {
   font-weight: bold;
 }
 
+.body {
+  position: relative;
+}
+.body:has(:not(.hidden)) {
+  overflow: hidden;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  z-index: 10;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+}
+.modal .form-container {
+  position: relative;
+  margin: 0 auto;
+  border: 2px solid black;
+  border-radius: 15px;
+  width: 50%;
+  padding: 30px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+}
+.modal .form-container i {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+}
+.modal .form-container i:hover {
+  cursor: pointer;
+}
+.modal .form-container p {
+  text-align: center;
+}
+.modal .form-container #contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: space-between;
+  width: 100%;
+}
+.modal .form-container #contact-form #submit-button {
+  margin: 0 auto;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 /* ---- */
 /* MAIN */
 /* ---- */

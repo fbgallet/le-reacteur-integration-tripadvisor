@@ -2,6 +2,10 @@ const carrousel = document.querySelector(".carrousel-container");
 const leftButton = document.querySelector(".scroll-left");
 const rightButton = document.querySelector(".scroll-right");
 let ticking = false;
+const modal = document.querySelector(".modal");
+const contactButton = document.querySelector(".login");
+const closeContactButton = document.querySelector(".form-container i");
+const submitButton = document.querySelector("#submit-button");
 
 function carrouselScroll() {
   if (getScrollPosition(carrousel) === 0)
@@ -43,5 +47,28 @@ function onCarouselScroll(e) {
   }
 }
 
+function onClickOnContactButton(e) {
+  modal.classList.remove("hidden");
+}
+
 carrousel.addEventListener("scroll", onCarouselScroll);
 carrouselScroll();
+
+contactButton.addEventListener("click", onClickOnContactButton);
+closeContactButton.addEventListener("click", () => {
+  modal.classList.add("hidden");
+});
+console.log(submitButton);
+submitButton.addEventListener("click", async (e) => {
+  e.preventDefault();
+  const formData = {
+    firstname: document.querySelector("#firstname").value,
+    lastname: document.querySelector("#lastname").value,
+    email: document.querySelector("#email").value,
+    object: document.querySelector("#object").value,
+    message: document.querySelector("#message").value,
+  };
+  console.log(formData);
+  // const response = await axios.post("http://localhost:3000/form", data);
+  // console.log(response);
+});
