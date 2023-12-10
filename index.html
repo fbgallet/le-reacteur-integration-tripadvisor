@@ -36,7 +36,9 @@
           <span><i class="icon-heart"></i><span>Voyages</span></span
           ><span
             ><i class="icon-notification_bell"></i><span>Alertes</span></span
-          ><button class="login black-button">Connectez-vous</button>
+          >
+          <span><i class="icon-email"></i></span>
+          <button class="login black-button">Connectez-vous</button>
           <i class="icon-search"></i>
         </nav>
       </div>
@@ -443,7 +445,16 @@
             cols="50"
             placeholder="Écrivez ici votre message..."
           ></textarea>
-          <input type="submit" value="Envoyer le message" id="submit-button" />
+          <input
+            class="black-button"
+            type="submit"
+            value="Envoyer le message"
+            id="submit-button"
+          />
+          <div class="invalid-form">
+            ⚠️ Tous les champs doivent être complétés pour envoyer le
+            formulaire.
+          </div>
         </form>
       </div>
     </div>

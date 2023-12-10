@@ -1515,8 +1515,7 @@ header .container .left-header .search-bar {
   display: flex;
   align-items: center;
   height: 36px;
-  width: 340px;
-  min-width: 180px;
+  width: 300px;
   border: solid 2px silver;
   border-radius: 18px;
   padding: 0 10px;
@@ -1532,7 +1531,7 @@ header .container nav {
   letter-spacing: 1.1px;
   display: flex;
   justify-content: flex-end;
-  gap: 15px;
+  gap: 10px;
   justify-items: center;
 }
 header .container nav > span {
@@ -1648,7 +1647,8 @@ footer a {
   margin: 0 auto;
   border: 2px solid black;
   border-radius: 15px;
-  width: 50%;
+  width: 60%;
+  max-width: 600px;
   padding: 30px;
   background-color: white;
   display: flex;
@@ -1659,14 +1659,19 @@ footer a {
 }
 .modal .form-container i {
   position: absolute;
-  top: 7px;
-  right: 7px;
+  top: 10px;
+  right: 10px;
+  font-weight: bold;
+  font-size: 20px;
 }
 .modal .form-container i:hover {
   cursor: pointer;
+  background-color: lightgray;
+  border-radius: 5px;
 }
 .modal .form-container p {
   text-align: center;
+  font-weight: bold;
 }
 .modal .form-container #contact-form {
   display: flex;
@@ -1675,12 +1680,32 @@ footer a {
   justify-content: space-between;
   width: 100%;
 }
+.modal .form-container #contact-form input,
+.modal .form-container #contact-form textarea {
+  border: 1px solid silver;
+  border-radius: 5px;
+  padding: 5px;
+  resize: none;
+}
 .modal .form-container #contact-form #submit-button {
   margin: 0 auto;
   width: -moz-fit-content;
   width: fit-content;
 }
+.modal .form-container div {
+  display: none;
+  position: relative;
+  bottom: 0;
+  font-size: 12px;
+  color: red;
+  text-align: center;
+}
 
+@media (max-width: 768px) {
+  .modal .form-container {
+    width: 90%;
+  }
+}
 /* ---- */
 /* MAIN */
 /* ---- */

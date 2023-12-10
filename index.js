@@ -6,7 +6,7 @@ const leftButton = document.querySelector(".scroll-left");
 const rightButton = document.querySelector(".scroll-right");
 let ticking = false;
 const modal = document.querySelector(".modal");
-const contactButton = document.querySelector(".login");
+const contactButton = document.querySelector(".icon-email");
 const closeContactButton = document.querySelector(".form-container i");
 const submitButton = document.querySelector("#submit-button");
 
@@ -53,15 +53,17 @@ function onCarouselScroll(e) {
 function onClickOnContactButton(e) {
   modal.classList.remove("hidden");
 }
+function closeModal(e) {
+  modal.classList.add("hidden");
+  document.querySelector(".invalid-form").style.display = "none";
+}
 
 carrousel.addEventListener("scroll", onCarouselScroll);
 carrouselScroll();
 
 contactButton.addEventListener("click", onClickOnContactButton);
-closeContactButton.addEventListener("click", () => {
-  modal.classList.add("hidden");
-});
-console.log(submitButton);
+closeContactButton.addEventListener("click", closeModal);
+
 submitButton.addEventListener("click", async (e) => {
   e.preventDefault();
   const formData = {
@@ -71,7 +73,23 @@ submitButton.addEventListener("click", async (e) => {
     object: document.querySelector("#object").value,
     message: document.querySelector("#message").value,
   };
-  console.log(formData);
-  const response = await axios.post("http://localhost:3000/form", formData);
-  console.log(response);
+  if (
+    formData.firstname &&
+    formData.lastname &&
+    formData.email &&
+    formData.message
+  ) {
+    // Backend distant désactivé pour ne pas abuser de Mailgun...
+    // const response = await axios.post(
+    //   "https://site--tripadvisor-backend--2bhrm4wg9nqn.code.run/form",
+    //   formData
+    // );
+    // Backend local
+    // const response = await axios.post("http://localhost:3000/form", formData);
+    // console.log(response);
+    console.log("Message envoyé avec les valeurs suivantes:", formData);
+    closeModal();
+  } else {
+    document.querySelector(".invalid-form").style.display = "block";
+  }
 });
