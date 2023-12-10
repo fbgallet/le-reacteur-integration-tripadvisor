@@ -6,7 +6,7 @@ const leftButton = document.querySelector(".scroll-left");
 const rightButton = document.querySelector(".scroll-right");
 let ticking = false;
 const modal = document.querySelector(".modal");
-const contactButton = document.querySelector(".icon-email");
+const contactButton = document.querySelector(".contact");
 const closeContactButton = document.querySelector(".form-container i");
 const submitButton = document.querySelector("#submit-button");
 
@@ -70,26 +70,26 @@ submitButton.addEventListener("click", async (e) => {
     firstname: document.querySelector("#firstname").value,
     lastname: document.querySelector("#lastname").value,
     email: document.querySelector("#email").value,
-    object: document.querySelector("#object").value,
+    subject: document.querySelector("#object").value,
     message: document.querySelector("#message").value,
   };
-  if (
-    formData.firstname &&
-    formData.lastname &&
-    formData.email &&
-    formData.message
-  ) {
-    // Backend distant désactivé pour ne pas abuser de Mailgun...
-    // const response = await axios.post(
-    //   "https://site--tripadvisor-backend--2bhrm4wg9nqn.code.run/form",
-    //   formData
-    // );
-    // Backend local
-    // const response = await axios.post("http://localhost:3000/form", formData);
-    // console.log(response);
-    console.log("Message envoyé avec les valeurs suivantes:", formData);
-    closeModal();
-  } else {
-    document.querySelector(".invalid-form").style.display = "block";
-  }
+  // if (
+  //   formData.firstname &&
+  //   formData.lastname &&
+  //   formData.email &&
+  //   formData.message
+  // ) {
+  // Backend distant désactivé pour ne pas abuser de Mailgun...
+  // const response = await axios.post(
+  //   "https://site--tripadvisor-backend--2bhrm4wg9nqn.code.run/form",
+  //   formData
+  // );
+  // Backend local
+  // const response = await axios.post("http://localhost:3000/form", formData);
+  // console.log(response);
+  console.log("Message envoyé avec les valeurs suivantes:", formData);
+  closeModal();
+  // } else {
+  //   document.querySelector(".invalid-form").style.display = "block";
+  // }
 });
